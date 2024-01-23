@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-slate-50/30 text-slate-800 max-w-[600px] my-4 m-auto;
+}
+
+h1 {
+    @apply text-2xl font-bold underline hover:text-slate-600;
+}
+
+p {
+    @apply leading-[1.6];
+}
+
+.articles {
+    @apply flex flex-col bg-slate-50/80 space-y-8 p-8 border rounded-xl;
+}
+
+article {
+    @apply space-y-4 rounded-md p-5 bg-white border border-slate-200/60;
+}
+
+/*article + article {
+    @apply mt-[3rem] pt-[3rem] border-t-[1px] border-[#c5c5c5];
+}*/
+
+.btn-return {
+    @apply font-semibold px-3 py-1.5 bg-teal-200 hover:bg-teal-300 rounded;
+}
