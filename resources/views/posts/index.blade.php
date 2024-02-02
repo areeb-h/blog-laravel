@@ -1,14 +1,16 @@
-@extends('layouts/default')
+@extends('.layouts.default')
 
 @section('content')
 
-    @include('components/_posts-header')
+    @include('posts._header')
 
     <main>
 
         @if($posts->count())
 
             <x-post-grid :posts="$posts"/>
+
+            {{ $posts->links('pagination::tailwind') }}
 
         @else
             <p>no post yet</p>
