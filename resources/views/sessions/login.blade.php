@@ -1,48 +1,14 @@
 @extends('.layouts.default')
 
 @section('title')
-    Blog - Register
+    Blog - Login
 @endsection
 
 @section('content')
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-        <form class="mx-auto max-w-md p-4 bg-slate-50 rounded-xl space-y-6" method="POST" action="/register">
+        <form class="mx-auto max-w-md p-4 bg-slate-50 rounded-xl space-y-6" method="POST" action="/login">
             @csrf
-            <h1 class="font-bold text-slate-800 text-center mb-6">Regsiter</h1>
-            <div class="space-y-2">
-                <label class="block uppercase font-bold text-xs text-gray-700"
-                       for="name">
-                    Name
-                </label>
-                <input
-                    class="border border-gray-400 p-2 w-full rounded-md"
-                    type="text"
-                    name="name"
-                    value="{{ old('name') }}"
-                    id="name"
-                    required
-                >
-                @error('name')
-                    <p class="text-sm text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="space-y-2">
-                <label class="block uppercase font-bold text-xs text-gray-700"
-                       for="username">
-                    Username
-                </label>
-                <input
-                    class="border border-gray-400 p-2 w-full rounded-md"
-                    type="text"
-                    name="username"
-                    value="{{ old('username') }}"
-                    id="username"
-                    required
-                >
-                @error('username')
-                    <p class="text-sm text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
+            <h1 class="font-bold text-slate-800 text-center mb-6">Login</h1>
             <div class="space-y-2">
                 <label class="block uppercase font-bold text-xs text-gray-700"
                        for="email">
@@ -73,7 +39,7 @@
                     required
                 >
             </div>
-            <button type="submit" class="btn-base">Submit</button>
+            <button type="submit" class="btn-base">Login</button>
             @if($errors->any())
                 <ul class="bg-red-100/20 px-3.5 py-1.5 rounded-md">
                     @foreach($errors->all() as $error)

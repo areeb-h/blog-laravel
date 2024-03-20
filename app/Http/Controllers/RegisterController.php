@@ -2,22 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRegisterRequest;
+use App\Models\User;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
+use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
-    public function create()
+    public function create(): View|Application
     {
         return view('register.create');
     }
 
-    public function store()
+    public function store(UserRegisterRequest $request): Application|Redirector|RedirectResponse
     {
-        request()->validate([
-            'name' => ['required', 'max:255'],
-            'username' => ['required', 'max:255', 'min:3'],
-            'email' => ['required', 'email', 'max:255'],
-            'password' => ['required', 'max:255', 'min:7']
-        ]);
+        $user = User::create($request->validated());
+
+        auth()->login($user);
+
+        return redirect('/')->with('success', 'Your account has been created');
     }
 }

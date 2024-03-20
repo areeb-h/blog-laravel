@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('register', [RegisterController::class, 'store']);
+
+
+//Gate::define('viewApiDocs', function (User $user) {
+//    return in_array($user->email, ['admin@app.com']);
+//});
